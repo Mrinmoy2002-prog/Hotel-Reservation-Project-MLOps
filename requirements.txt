@@ -1,2 +1,10 @@
 pandas 
 numpy
+scikit-learn
+google-cloud-storage
+pyyaml
+matplotlib
+seaborn
+imbalanced-learn
+lightgbm
+mlflow
