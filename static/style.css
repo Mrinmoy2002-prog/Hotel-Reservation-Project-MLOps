@@ -1,0 +1,157 @@
+/* Import a modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4cc9f0;
+    --danger-color: #ef233c;
+    --success-color: #38b000;
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #2b2d42;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+h1 {
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: #8d99ae;
+    margin-top: 40px;
+    letter-spacing: 2px;
+}
+
+/* Modern Grid Form */
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #4a4e69;
+    transition: color 0.3s ease;
+}
+
+/* Interactive Inputs */
+input, select {
+    padding: 14px;
+    border: 2px solid #edf2f4;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #f8f9fa;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.15);
+}
+
+/* Highlight label on focus */
+.form-group:focus-within label {
+    color: var(--primary-color);
+}
+
+/* Animated Button */
+button {
+    grid-column: 1 / -1;
+    background: var(--primary-color);
+    color: white;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(67, 97, 238, 0.3);
+}
+
+button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(67, 97, 238, 0.4);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Styling the Result section */
+.result {
+    grid-column: 1 / -1;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* We can use the logic in Jinja to change classes, 
+   but for now, let's style the generic result box */
+.result p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Custom styles for the two states (requires minor HTML change) */
+.canceled { color: var(--danger-color); background: #ffeeef; border: 1px solid var(--danger-color); }
+.not-canceled { color: var(--success-color); background: #f2ffed; border: 1px solid var(--success-color); }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .container { padding: 30px; }
+    h1 { font-size: 1.8rem; }
+}

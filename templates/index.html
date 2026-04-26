@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Hotel Reservation Prediction</title>
+</head>
+<body>
+<div class = "container">
+    <h1>Hotel Reservation Prediction</h1>
+    <p>Welcome to the Hotel Reservation Prediction project! This project aims to predict whether a hotel reservation will be canceled or not based on various features of the reservation and the customer.</p>
+    <h2>Project Overview</h2>
+    <p>The project involves data preprocessing, exploratory data analysis, feature engineering, model training, and evaluation. We use a dataset containing information about hotel reservations, including details such as booking date, arrival date, number of guests, and more.</p>
+    <h2>Technologies Used</h2>
+    <ul>
+        <li>Python</li>
+        <li>Pandas</li>
+        <li>Scikit-learn</li>
+        <li>LightGBM</li>
+        <li>MLflow</li>
+    </ul>
+    <h2>Getting Started</h2>
+    <p>To get started with this project, you can clone the repository and follow the instructions in the README file. The project is structured into different modules for data preprocessing, model training, and evaluation.</p>
+    <h2>Contact Information</h2>
+    <p>If you have any questions or would like to contribute to this project, please feel free to reach out!</p>
+
+    <form method="POST">
+        <!-- Add form fields here -->
+         <div class = "form-group">
+            <label for="lead_time">Lead Time:</label>
+            <input type="number" id="lead_time" name="lead_time" required>
+        </div>
+
+        <div class = "form-group">
+            <label for="no_of_special_requests">No of Special Requests:</label>
+            <input type="number" id="no_of_special_requests" name="no_of_special_requests" required>
+        </div>
+
+        <div class = "form-group">
+            <label for="avg_price_per_room">Average Price per Room:</label>
+            <input type="number" id="avg_price_per_room" name="avg_price_per_room" required>
+        </div>
+
+        <div class = "form-group">
+            <label for="arrival_month">Arrival Month:</label>
+            <select id="arrival_month" name="arrival_month" required>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+        </div>
+
+        <div class = "form-group">
+            <label for="arrival_date">Arrival Date:</label>
+            <select id="arrival_date" name="arrival_date" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+        </div>
+
+        <div class = "form-group">
+            <label for="market_segment_type">Market Segment Type:</label>
+            <select id="market_segment_type" name="market_segment_type" required>
+                <option value="0">Direct</option>
+                <option value="1">Corporate</option>
+                <option value="2">Online Travel Agent</option>
+                <option value="3">Offline Travel Agent</option>
+                <option value="4">Complementary</option>
+            </select>
+        </div>
+        
+        <div class = "form-group">
+            <label for="no_of_week_nights">Number of Week Nights:</label>
+            <input type="number" id="no_of_week_nights" name="no_of_week_nights" required>
+        </div>
+
+        <div class = "form-group">
+            <label for="no_of_weekend_nights">Number of Weekend Nights:</label>
+            <input type="number" id="no_of_weekend_nights" name="no_of_weekend_nights" required>
+        </div>
+
+        <div class = "form-group">
+            <label for="type_of_meal_plan">Type of Meal Plan:</label>
+            <select id="type_of_meal_plan" name="type_of_meal_plan" required>
+                <option value="0">Meal Plan 1</option>
+                <option value="1">Meal Plan 2</option>
+                <option value="2">Meal Plan 3</option>
+                <option value="3">Not Selected</option>
+            </select>
+        </div>
+
+        <div class = "form-group">
+            <label for="room_type_reserved">Room Type Reserved:</label>
+            <select id="room_type_reserved" name="room_type_reserved" required>
+                <option value="0">Room Type 1</option>
+                <option value="1">Room Type 2</option>
+                <option value="2">Room Type 3</option>
+                <option value="3">Room Type 4</option>
+                <option value="4">Room Type 5</option>
+            </select>
+        </div>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <!--  Jinja2 template for displaying the result from Flask to HTML  -->
+    {% if prediction is not none %}
+    <div class="result">
+        {% if prediction == 0 %}
+            <p>The model predicts that the reservation will be canceled.</p>
+        {% else %}
+            <p>The model predicts that the reservation will not be canceled.</p>
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>

@@ -8,3 +8,5 @@ seaborn
 imbalanced-learn
 lightgbm
 mlflow
+flask
+gunicorn
