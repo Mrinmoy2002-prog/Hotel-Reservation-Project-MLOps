@@ -1,3 +1,5 @@
+#  This is for dockerising the Jenkins Container
+
 # Use the Jenkins image as the base image
 FROM jenkins/jenkins:lts
 
