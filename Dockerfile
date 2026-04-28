@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # 5. COPY DEPENDENCIES FIRST (To leverage Docker cache)
 # Assuming you have a setup.py or requirements.txt
-COPY setup.py . 
+COPY setup.py requirements.txt ./
 # If using requirements.txt, add: COPY requirements.txt .
 
 # 6. Install dependencies
